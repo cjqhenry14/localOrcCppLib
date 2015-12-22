@@ -11,9 +11,9 @@ Modified orc lib based on https://github.com/apache/orc
 
 ---
 ##Current changes made by me
-1) Core lib source code:
+1) Core lib source code:  
 c++/src/ColumnPrinter.cc:  
-  Main change: replace by void StringColumnPrinter::printRow(uint64_t rowId, char** tuple, unsigned int curColId)  
+&emsp;&emsp;Main change: replace by void StringColumnPrinter::printRow(uint64_t rowId, char** tuple, unsigned int curColId)  
 c++/include/orc/ColumnPrinter.hh  
 
 2) test usage code:  
@@ -36,9 +36,9 @@ Then move them to /hdfs_orc_fdw/orcLib/
 1) Modify with your own code.  
 
 2) Build the lib, maybe there will be errors (build wiil stop somewhere), but should ensure these 5 static lib files are generated:   libprotobuf.a,  libz.a, libgmock.a, libsnappy.a, liborc.a  
-command:   
-  cd build  
-    make  
+command:  
+&emsp;cd build  
+&emsp;&emsp;make  
  
 3) move the updated .a (mainly liborc.a) files to hdfs_orc_fdw/orcLib/  
 
@@ -47,7 +47,7 @@ command:
 1) Modify with your own code.  
 
 2) command:  
-    cd build/tools/src/  
-      make  
+&emsp;cd build/tools/src/  
+&emsp;&emsp;make  
 
 3) run the code: ./file-contents /usr/pgsql-9.4/test_data1.orc
