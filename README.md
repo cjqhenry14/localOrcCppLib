@@ -1,14 +1,14 @@
 Modified orc lib based on https://github.com/apache/orc
 
 ##Building
-‘''
+'''
 -To compile:
 % export TZ=America/Los_Angeles
 % mkdir build
 % cd build
 % cmake ..
 % make
-‘''
+'''
 ---
 ##Current changes made by me
 1) Core lib source code:
@@ -21,11 +21,13 @@ tools/src/FileContents.cc
 
 3) compile flags files:
 add -fPIC option to these files:
+
      build/c++/libs/zlib-1.2.8/CMakeFiles/zlib.dir/flags.make
      build/c++/libs/snappy-1.1.2/CMakeFiles/snappy.dir/flags.make
      build/c++/libs/protobuf-2.6.0/CMakeFiles/protobuf.dir/flags.make
      build/c++/libs/gmock-1.7.0/CMakeFiles/gmock.dir/flags.make
      build/c++/src/CMakeFiles/orc.dir/flags.make
+     
 Then move them to /hdfs_orc_fdw/orcLib/
      mv …
 
