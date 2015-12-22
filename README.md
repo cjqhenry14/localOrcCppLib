@@ -35,7 +35,7 @@ Then move them to /hdfs_orc_fdw/orcLib/
 ##Steps to modify the core source code of lib for your own use:  
 1) Modify with your own code.  
 
-2) Build the lib, maybe there will be errors (build wiil stop somewhere), but should ensure these 5 static lib files are generated:   libprotobuf.a,  libz.a, libgmock.a, libsnappy.a, liborc.a  
+2) Build the lib, although maybe there will be errors (build wiil stop somewhere), but at least should ensure these 5 static lib files are generated:   libprotobuf.a,  libz.a, libgmock.a, libsnappy.a, liborc.a  
 command:  
 &emsp;cd build  
 &emsp;&emsp;make  
