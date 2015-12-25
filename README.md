@@ -36,7 +36,6 @@ add -fPIC option to these files:
      build/c++/libs/gmock-1.7.0/CMakeFiles/gmock.dir/flags.make
      build/c++/src/CMakeFiles/orc.dir/flags.make
      
-Then move them to /hdfs_orc_fdw/orcLib/  
 
 ---
 ##Steps to modify the core source code of lib for your own use:  
