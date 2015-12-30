@@ -16,11 +16,13 @@ c++/src/FileContents.cc expands the above functionality and print the contents o
 c++/src/FileStatistics.cc reads and displays column statistics at the file- and stripe-level granularity.  
 c++/src/FileMemory.cc evaluates dynamic memory usage. It also shows how to read only specific columns from an ORC file.    
 
+Note:  Because I have modified the source code of the library, thses examples may not work, you can download the original library (https://github.com/apache/orc) to use the examples.  
+
 ---  
 ##Current changes made by me
 1) Core lib source code:  
 c++/src/ColumnPrinter.cc:  
-&emsp;&emsp;Main change: replace ColumnPrinter::printRow() with void ColumnPrinter::printRow(uint64_t rowId, char** tuple, unsigned int curColId), because I want to return one record as char** to fdw (which will be used in iterativeForeignScan() function). The parameter char** tuple (one line record) will be passed from fdw, and then filled with values parsed by orc lib.  
+&emsp;&emsp;Main change: replace ColumnPrinter::printRow() with void ColumnPrinter::printRow(uint64_t rowId, char** tuple, unsigned int curColId), because I want to return one record as char** to fdw (which will be used in iterativeForeignScan() function). The parameter char** tuple (one line record) will be passed from fdw, and then filled with values parsed by orc lib.  Currently, char** tuple is malloced in fdw, and each char* of char** tuple is malloced in ColumnPrinter.cc.  
 
 c++/include/orc/ColumnPrinter.hh  
 
@@ -46,8 +48,9 @@ command:
 &emsp;cd build  
 &emsp;&emsp;make  
  
-3) move the updated .a (mainly liborc.a) files to hdfs_orc_fdw/orcLib/  
+3) move the updated .a (mainly liborc.a) files to server_orc_fdw/orcLib/  
 
+4) If you modify ColumnPrinter.hh  Int128.hh  MemoryPool.hh  orc-config.hh  OrcFile.hh  Reader.hh  Vector.hh, these files should be copied to server_orc_fdw/orcInclude/  
 ---
 ##Steps to modify the test usage code (eg. hdfsOrcCppLib/build/tools/src/FileContents.cc) for your own use:  
 1) Modify with your own code.  
