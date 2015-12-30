@@ -51,6 +51,7 @@ command:
 3) move the updated .a (mainly liborc.a) files to server_orc_fdw/orcLib/  
 
 4) If you modify ColumnPrinter.hh  Int128.hh  MemoryPool.hh  orc-config.hh  OrcFile.hh  Reader.hh  Vector.hh, these files should be copied to server_orc_fdw/orcInclude/  
+
 ---
 ##Steps to modify the test usage code (eg. hdfsOrcCppLib/build/tools/src/FileContents.cc) for your own use:  
 1) Modify with your own code.  
